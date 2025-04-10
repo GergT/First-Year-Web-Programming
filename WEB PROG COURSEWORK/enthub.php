@@ -119,9 +119,10 @@ if (!$conn) {
     <table id = "consultantsTable1"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 1
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
@@ -131,7 +132,7 @@ if (!$conn) {
       
     
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -142,6 +143,7 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map1" style="height: 400px;"></div>
   </div>
 
 
@@ -161,9 +163,10 @@ if (!$conn) {
     <table id = "consultantsTable2"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 2
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
@@ -173,7 +176,7 @@ if (!$conn) {
       
     
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -184,6 +187,7 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map2" style="height: 400px;"></div>
   </div>
 
 
@@ -203,9 +207,10 @@ if (!$conn) {
     <table id = "consultantsTable3"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 3
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
@@ -215,7 +220,7 @@ if (!$conn) {
       
     
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -226,6 +231,7 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map3" style="height: 400px;"></div>
   </div>
 
   <div class="hiddenDiv" id = "pediatricInfo">
@@ -244,9 +250,10 @@ if (!$conn) {
     <table id = "consultantsTable4"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 4
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
@@ -256,7 +263,7 @@ if (!$conn) {
       
     
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -267,6 +274,7 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map4" style="height: 400px;"></div>
   </div>
 
 
@@ -286,9 +294,10 @@ if (!$conn) {
     <table id = "consultantsTable5"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 5
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
@@ -298,7 +307,7 @@ if (!$conn) {
       
     
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -309,6 +318,7 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map5" style="height: 400px;"></div>
   </div>
 
   <div class="hiddenDiv" id = "surgeryInfo">
@@ -327,19 +337,19 @@ if (!$conn) {
     <table id = "consultantsTable6"> <tr><th>Name</th> <th>Consultation Fee</th> <th>Rating /5</th></tr> 
   
   <?php
-    $sql = "SELECT name as 'Name', consultation_fee as 'Consultation Fee', AVG(score) as 'Rating /5' 
+    $sql = "SELECT consultants.name as 'Name', consultants.consultation_fee as 'Consultation Fee', AVG(reviews.score) as 'Rating /5', clinics.latitude as 'lat',clinics.longitude as 'long'
     FROM consultants 
-    JOIN reviews ON consultants.id = reviews.consultant_id 
+    JOIN reviews ON consultants.id = reviews.consultant_id
+    JOIN clinics ON consultants.clinic_id = clinics.id
     WHERE consultants.speciality_id = 6
     GROUP BY consultants.id, consultants.name, consultants.consultation_fee";
     
 
     $result = mysqli_query($conn, $sql);
     if ($result) {
-      
-    
+          
       while ($row = mysqli_fetch_assoc($result)) {
-        echo "<tr>";
+        echo "<tr data-lat='{$row['lat']}' data-long='{$row['long']}'>";
         echo "<td>" . $row['Name'] . "</td>";
         echo "<td>" . $row['Consultation Fee'] . "</td>";
         echo "<td>" . round($row['Rating /5'] , 1) . "</td>";
@@ -350,6 +360,9 @@ if (!$conn) {
     }
 
   ?>
+  <div id="map6" style="height: 400px;"></div>
+
+
   </div>
 
   
@@ -359,6 +372,10 @@ if (!$conn) {
 
 
   <script src="entActions.js"></script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCudFWNgLdMdsOtsuLS6ZPXiz1Hp02o56s">
+  </script>
+
 </body>
 
-<footer></footer>
+<footer>GEORGE TRAPP F418623</footer>
