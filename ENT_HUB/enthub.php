@@ -1,9 +1,9 @@
   <?php
 
-  $servername = "sci-mysql.lboro.ac.uk";
-  $dbname = "coa123edb";
-  $username = "coa123edb";
-  $password = "E4XujVcLcNPhwfBjx-";
+  $servername = "";
+  $dbname = "";
+  $username = "";
+  $password = "";
 
 
   $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -847,7 +847,7 @@ while ($row = $result->fetch_assoc()) {
 
 
   <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCudFWNgLdMdsOtsuLS6ZPXiz1Hp02o56s">
+    src="https://maps.googleapis.com/maps/api/js?key=">
   </script>
 
 </body>
